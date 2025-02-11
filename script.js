@@ -7,6 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("cv-creator-form")
   let selectedTheme = "simple"
 
+  const mobileMenuButton = document.getElementById("mobile-menu-button")
+  const mobileMenu = document.getElementById("mobile-menu")
+
+  mobileMenuButton.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden")
+  })
+
+  // Close mobile menu when a link is clicked
+  mobileMenu.addEventListener("click", (e) => {
+    if (e.target.tagName === "A") {
+      mobileMenu.classList.add("hidden")
+    }
+  })
+
   // Theme selection
   themeSelection.addEventListener("click", (e) => {
     if (e.target.closest(".theme-option")) {
@@ -63,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const element = cvContent
     // Import html2pdf library.  This needs to be done before the function is called.  The method of importing will depend on your project setup (e.g., using a module bundler like Webpack or importing a CDN script).
     // Example using a CDN:  This assumes you have included the html2pdf library in your HTML file via a <script> tag.
+    const html2pdf = window.html2pdf // Assuming html2pdf is globally available after including the library in your HTML
     html2pdf().from(element).save("my_cv.pdf")
   })
 })
