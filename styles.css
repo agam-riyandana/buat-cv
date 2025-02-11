@@ -43,11 +43,11 @@
 #theme-selection,
 #cv-form,
 #cv-preview {
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, display 0.3s ease-in-out;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
   opacity: 0;
 }
 
