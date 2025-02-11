@@ -31,11 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
-  function showCVForm() {
-    themeSelection.classList.add("hidden")
-    cvForm.classList.remove("hidden")
-  }
-
   // Form submission
   form.addEventListener("submit", (e) => {
     e.preventDefault()
@@ -135,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Handle photo upload
     const photoFile = formData.get("photo")
-    if (photoFile.size > 0) {
+    if (photoFile && photoFile.size > 0) {
       const reader = new FileReader()
       reader.onload = (e) => {
         const img = document.createElement("img")
@@ -149,8 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Reinitialize Lucide icons
-    // Assuming lucide is a globally available object or function after importing the library.  If not, you'll need to adjust this line.
-    // Added this line to check if lucide is defined before using it.
+    // Assuming lucide is a global variable or imported correctly.  If not, add import statement here.
     if (typeof lucide !== "undefined") {
       lucide.createIcons()
     } else {
@@ -161,8 +155,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Download PDF
   downloadPdfBtn.addEventListener("click", () => {
     const element = cvContent
-    const html2pdf = window.html2pdf
-    html2pdf().from(element).save("my_cv.pdf")
+    const opt = {
+      margin: 10,
+      filename: "my_cv.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+    }
+    html2pdf().set(opt).from(element).save()
   })
 })
 
