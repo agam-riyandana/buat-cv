@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
       <div class="mt-4 text-sm text-gray-500">
-        Created using CV Creator by v0 AI Assistant
+        Created using CV Creator by Agam Riyandana
       </div>
     `
 
