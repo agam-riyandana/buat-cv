@@ -5,28 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Creator</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="script.js" defer></script>
 </head>
 <body class="bg-gray-100 text-gray-900">
     <header class="bg-gray-900 text-white p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">CV Creator</h1>
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="#" class="hover:text-gray-300">Home</a></li>
-                    <li><a href="#" class="hover:text-gray-300">Create CV</a></li>
-                    <li><a href="#" class="hover:text-gray-300">Templates</a></li>
-                    <li><a href="#" class="hover:text-gray-300">Samples</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">CV Creator</h1>
+        <nav class="hidden md:block">
+            <ul class="flex space-x-4">
+                <li><a href="#" class="hover:text-gray-300">Home</a></li>
+                <li><a href="#" class="hover:text-gray-300">Create CV</a></li>
+                <li><a href="#" class="hover:text-gray-300">Templates</a></li>
+                <li><a href="#" class="hover:text-gray-300">Samples</a></li>
+            </ul>
+        </nav>
+        <button id="mobile-menu-button" class="md:hidden">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden">
+        <ul class="mt-2 space-y-2">
+            <li><a href="#" class="block hover:text-gray-300">Home</a></li>
+            <li><a href="#" class="block hover:text-gray-300">Create CV</a></li>
+            <li><a href="#" class="block hover:text-gray-300">Templates</a></li>
+            <li><a href="#" class="block hover:text-gray-300">Samples</a></li>
+        </ul>
+    </div>
+</header>
 
-    <main class="container mx-auto mt-8 p-4">
+    <main class="container mx-auto mt-8 px-4 sm:px-6 lg:px-8">
         <section id="theme-selection" class="mb-8">
             <h2 class="text-2xl font-bold mb-4">Choose a CV Theme</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div class="theme-option bg-white p-4 rounded shadow cursor-pointer" data-theme="simple">
                     <h3 class="font-bold">Simple</h3>
                     <p>A clean and minimalist design</p>
@@ -90,8 +104,9 @@
 
     <footer class="bg-gray-900 text-white p-4 mt-8">
         <div class="container mx-auto text-center">
-            <p>&copy; 2025 CV Creator. All rights reserved.</p>
+            <p>&copy; 2023 CV Creator. All rights reserved.</p>
         </div>
     </footer>
 </body>
 </html>
+
