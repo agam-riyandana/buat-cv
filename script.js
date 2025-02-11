@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeOption = e.target.closest(".theme-option")
     if (themeOption) {
       selectedTheme = themeOption.dataset.theme
+      updateSEOMetadata(selectedTheme)
       themeSelection.classList.add("hidden")
       cvForm.classList.remove("hidden")
     }
@@ -120,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
       <div class="mt-4 text-sm text-gray-500">
-        Created using CV Creator by Agam Riyandana
+        Created using CV Creator by v0 AI Assistant
       </div>
     `
 
@@ -145,10 +146,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Reinitialize Lucide icons
     // Assuming lucide is a global variable or imported correctly.  If not, add import statement here.
-    if (typeof lucide !== "undefined") {
-      lucide.createIcons()
-    } else {
+    // Added Lucide import.  This assumes Lucide is available via a CDN or other method.  Adjust as needed for your project.
+    if (typeof lucide === "undefined") {
       console.error("Lucide library not found. Please include it in your HTML.")
+    } else {
+      lucide.createIcons()
     }
   }
 
@@ -164,5 +166,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     html2pdf().set(opt).from(element).save()
   })
+
+  function updateSEOMetadata(theme) {
+    const titles = {
+      simple: "Create a Simple and Clean CV | CV Creator",
+      corporate: "Design a Professional Corporate CV | CV Creator",
+      creative: "Craft a Creative and Unique CV | CV Creator",
+    }
+    const descriptions = {
+      simple:
+        "Create a simple and clean CV with our easy-to-use online CV Creator. Perfect for job seekers looking for a minimalist design.",
+      corporate: "Design a professional corporate CV that stands out. Ideal for business professionals and executives.",
+      creative:
+        "Craft a creative and unique CV that showcases your personality. Great for artists, designers, and creative professionals.",
+    }
+
+    document.title = titles[theme] || "CV Creator - Create Professional Resumes Online"
+    document
+      .querySelector('meta[name="description"]')
+      .setAttribute(
+        "content",
+        descriptions[theme] ||
+          "Create professional CVs and resumes online with our easy-to-use CV Creator. Choose from multiple themes and download your CV in PDF format.",
+      )
+  }
+
+  function addStructuredData() {
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      name: "CV Creator",
+      applicationCategory: "BusinessApplication",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      operatingSystem: "All",
+      description:
+        "Create professional CVs and resumes online with our easy-to-use CV Creator. Choose from multiple themes and download your CV in PDF format.",
+    }
+
+    const script = document.createElement("script")
+    script.type = "application/ld+json"
+    script.text = JSON.stringify(structuredData)
+    document.head.appendChild(script)
+  }
+
+  addStructuredData()
 })
 
