@@ -23,12 +23,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Theme selection
   themeSelection.addEventListener("click", (e) => {
-    if (e.target.closest(".theme-option")) {
-      selectedTheme = e.target.closest(".theme-option").dataset.theme
+    const themeOption = e.target.closest(".theme-option")
+    if (themeOption) {
+      selectedTheme = themeOption.dataset.theme
       themeSelection.classList.add("hidden")
       cvForm.classList.remove("hidden")
     }
   })
+
+  function showCVForm() {
+    themeSelection.classList.add("hidden")
+    cvForm.classList.remove("hidden")
+  }
 
   // Form submission
   form.addEventListener("submit", (e) => {
@@ -144,10 +150,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Reinitialize Lucide icons
     // Assuming lucide is a globally available object or function after importing the library.  If not, you'll need to adjust this line.
+    // Added this line to check if lucide is defined before using it.
     if (typeof lucide !== "undefined") {
       lucide.createIcons()
     } else {
-      console.error("Lucide library not found.  Please include it in your HTML.")
+      console.error("Lucide library not found. Please include it in your HTML.")
     }
   }
 
