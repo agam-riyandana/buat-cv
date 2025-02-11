@@ -1,0 +1,24 @@
+@media (max-width: 640px) {
+  .theme-option {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #cv-creator-form {
+    padding: 1rem;
+  }
+}
+
+.cv-simple,
+.cv-corporate,
+.cv-creative {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+#cv-content img {
+  max-width: 100%;
+  height: auto;
+}
+
