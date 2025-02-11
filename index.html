@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Creator</title>
+    <title>CV Creator - Create Professional Resumes Online</title>
+    <meta name="description" content="Create professional CVs and resumes online with our easy-to-use CV Creator. Choose from multiple themes and download your CV in PDF format.">
+    <meta name="keywords" content="CV creator, resume builder, professional CV, online resume, job application">
+    <meta property="og:title" content="CV Creator - Create Professional Resumes Online">
+    <meta property="og:description" content="Create professional CVs and resumes online with our easy-to-use CV Creator. Choose from multiple themes and download your CV in PDF format.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-cv-creator-url.com">
+    <meta property="og:image" content="https://your-cv-creator-url.com/og-image.jpg">
+    <link rel="canonical" href="https://your-cv-creator-url.com">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -127,13 +135,14 @@
 
     <footer class="bg-gray-900 text-white p-4 mt-8">
         <div class="container mx-auto text-center">
-            <p>&copy; 2023 CV Creator. All rights reserved.</p>
+            <p>&copy; <span id="current-year"></span> CV Creator. All rights reserved.</p>
             <p class="mt-2 text-sm">Created by Agam Riyandana</p>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
