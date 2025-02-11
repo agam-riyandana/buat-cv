@@ -22,3 +22,21 @@
   height: auto;
 }
 
+/* Icon styles */
+[data-lucide] {
+  stroke-width: 1.5;
+}
+
+/* Theme-specific preview styles */
+.theme-option[data-theme="simple"] {
+  border-left: 4px solid #3498db;
+}
+
+.theme-option[data-theme="corporate"] {
+  border-left: 4px solid #e74c3c;
+}
+
+.theme-option[data-theme="creative"] {
+  border-left: 4px solid #00b894;
+}
+
